@@ -1,0 +1,26 @@
+{
+  "words": [
+    {
+      "english": "egg",
+      "polish": "jajko",
+      "date": 0
+    },
+    {
+      "english": "leg",
+      "polish": "jajko",
+      "date": 0
+    }
+  ],
+  "sentences": [
+    {
+      "english": "Look at my horse",
+      "polish": "Spójrz na mojego konia",
+      "date": 0
+    },
+    {
+      "english": "My horse is amazing",
+      "polish": "Mój koń jest wspaniały",
+      "date": 0
+    }
+  ]
+}
