@@ -8,7 +8,7 @@ const val FLASHCARD_TABLE_NAME = "flashcards"
 
 @Entity(tableName = FLASHCARD_TABLE_NAME)
 data class Flashcard (
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Long,
     var englishText: String,
     var polishMeaning: String,
     var dateLastStudied: Date?,

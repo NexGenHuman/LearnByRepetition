@@ -7,7 +7,7 @@ const val FLASHCARD_SETS_TABLE_NAME = "flashcardSets"
 
 @Entity(tableName = FLASHCARD_SETS_TABLE_NAME)
 data class FlashcardSet (
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Long,
     var name: String
 )
 

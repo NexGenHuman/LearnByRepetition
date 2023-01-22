@@ -7,8 +7,8 @@ const val INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME = "intermediateFlashcardsSets"
 
 @Entity(tableName = INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME, primaryKeys = ["id_set","id_flashcard"])
 data class IntermediateFlashcardsSets (
-    var id_set: Int,
-    var id_flashcard: Int
+    var id_set: Long,
+    var id_flashcard: Long
     )
 
 data class SetWithFlashcards (

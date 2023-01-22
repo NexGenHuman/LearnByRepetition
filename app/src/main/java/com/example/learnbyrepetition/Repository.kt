@@ -37,4 +37,8 @@ class Repository {
     fun getAllIntermediateFlashcards(): LiveData<List<Flashcard>> {
         return allFlashcards
     }
+
+    fun insertFlashcard(flashcard: Flashcard) {
+        flashcardDao.insertAll(flashcard)
+    }
 }
