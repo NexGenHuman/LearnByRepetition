@@ -1,8 +1,12 @@
 package com.example.learnbyrepetition
-
+/*
 import android.app.Application
+import androidx.annotation.RestrictTo.Scope
 import androidx.lifecycle.LiveData
 import com.example.learnbyrepetition.classes.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.awaitAll
 
 class Repository {
 
@@ -10,9 +14,9 @@ class Repository {
     private val flashcardSetDao: FlashcardSetDao
     private val intermediateFlashcardsSetsDao: IntermediateFlashcardsSetsDao
 
-    private var allFlashcards: LiveData<List<Flashcard>>
-    private var allFlashcardSets: LiveData<List<FlashcardSet>>
-    private var allInternediateFlashcardsSets: LiveData<List<IntermediateFlashcardsSets>>
+    private var allFlashcards: List<Flashcard>
+    private var allFlashcardSets: List<FlashcardSet>
+    private var allInternediateFlashcardsSets: List<IntermediateFlashcardsSets>
 
     constructor(app: Application) {
         var db = DatabaseFlashcards.getDatabase(app)
@@ -41,4 +45,4 @@ class Repository {
     fun insertFlashcard(flashcard: Flashcard) {
         flashcardDao.insertAll(flashcard)
     }
-}
+}*/

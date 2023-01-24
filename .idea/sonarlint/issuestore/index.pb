@@ -15,5 +15,3 @@ Gapp/src/main/java/com/example/learnbyrepetition/ui/home/HomeFragment.kt,4\9\49
 Tapp/src/main/java/com/example/learnbyrepetition/ui/flashcards/FlashcardsViewModel.kt,d\f\df00187d52b42c676ebb3b8ddaf84f247d44c70c
 ƒ
 Sapp/src/main/java/com/example/learnbyrepetition/ui/flashcards/FlashcardsFragment.kt,3\6\36e791d196cf8d9bf3837ceec28accfaf272abd6
-o
-?app/src/main/java/com/example/learnbyrepetition/MainActivity.kt,e\6\e6445017d76d107fcd6422d80ee6c4e228c1ed21

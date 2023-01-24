@@ -1,13 +1,13 @@
 package com.example.learnbyrepetition
 
+import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.room.Database
+import androidx.lifecycle.lifecycleScope
 import com.example.learnbyrepetition.classes.Flashcard
-import com.example.learnbyrepetition.classes.FlashcardDao
 import com.example.learnbyrepetition.databinding.ActivityAddFlashcardBinding
-import com.example.learnbyrepetition.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
 
 class AddFlashcardActivity : AppCompatActivity() {
 
@@ -24,7 +24,6 @@ class AddFlashcardActivity : AppCompatActivity() {
             val polishText = binding.newFlashcardPolishText.text.toString()
             val isWord = binding.newFlashcardIsWord.isChecked
             var newFlashcard = Flashcard(
-                0,
                 englishText,
                 polishText,
                 null,
@@ -33,11 +32,12 @@ class AddFlashcardActivity : AppCompatActivity() {
                 isWord,
                 false)
 
-            DatabaseFlashcards.getDatabase(this).flashcardDao().insertAll(newFlashcard)
-            if(!DatabaseFlashcards.getDatabase(this).flashcardDao().getAll().value.isNullOrEmpty())
-                Log.d("addFlashcard", "database isn't empty")
-            else
-                Log.d("addFlashcard", "EMPTY")
+            val context = this
+
+            lifecycleScope.launch {
+                DatabaseFlashcards.getDatabase(context).flashcardDao().insertAll(newFlashcard)
+            }
+
 
         }
     }

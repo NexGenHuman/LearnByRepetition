@@ -1,13 +1,17 @@
 package com.example.learnbyrepetition
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.learnbyrepetition.classes.*
+import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = [Flashcard::class, FlashcardSet::class, IntermediateFlashcardsSets::class],
     version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class DatabaseFlashcards: RoomDatabase() {
     abstract fun flashcardDao(): FlashcardDao
     abstract fun flashcardSetDao(): FlashcardSetDao

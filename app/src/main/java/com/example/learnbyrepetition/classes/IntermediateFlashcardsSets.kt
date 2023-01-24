@@ -7,16 +7,17 @@ const val INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME = "intermediateFlashcardsSets"
 
 @Entity(tableName = INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME, primaryKeys = ["id_set","id_flashcard"])
 data class IntermediateFlashcardsSets (
-    var id_set: Long,
-    var id_flashcard: Long
+    val id_set: Long,
+    val id_flashcard: Long
     )
 
 data class SetWithFlashcards (
     @Embedded val flashcardSet: FlashcardSet,
     @Relation(
-        parentColumn = "id",
+        parentColumn = "id_set",
         entityColumn = "id_flashcard",
-        associateBy = Junction(IntermediateFlashcardsSets::class)
+        entity = Flashcard::class,
+        associateBy = Junction(IntermediateFlashcardsSets::class, parentColumn = "id_set", entityColumn = "id_flashcard")
     )
     val flashcards: List<Flashcard>
 )
@@ -24,9 +25,10 @@ data class SetWithFlashcards (
 data class FlashcardInSets (
     @Embedded val flashcard: Flashcard,
     @Relation(
-        parentColumn = "id",
+        parentColumn = "id_flashcard",
         entityColumn = "id_set",
-        associateBy = Junction(IntermediateFlashcardsSets::class)
+        entity = FlashcardSet::class,
+        associateBy = Junction(IntermediateFlashcardsSets::class, parentColumn = "id_flashcard", entityColumn = "id_set")
     )
     val sets: List<FlashcardSet>
 )
@@ -34,22 +36,22 @@ data class FlashcardInSets (
 @Dao
 interface IntermediateFlashcardsSetsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
+    suspend fun insertAll(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
 
     @Update
-    fun updateAll(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
+    suspend fun updateAll(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
 
     @Delete
-    fun delete(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
+    suspend fun delete(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
 
     @Query("SELECT * FROM $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME")
-    fun getAll(): LiveData<List<IntermediateFlashcardsSets>>
+    suspend fun getAll(): List<IntermediateFlashcardsSets>
 
     @Transaction
-    @Query("SELECT * FROM $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME WHERE id_set = :setId")
-    fun getFlashcardsInSet(setId: Int): LiveData<List<SetWithFlashcards>>
+    @Query("SELECT * FROM $FLASHCARD_SETS_TABLE_NAME")
+    suspend fun setWithFlashcards(): List<SetWithFlashcards>
 
     @Transaction
-    @Query("SELECT * FROM $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME WHERE id_flashcard = :flashcardId")
-    fun getSetsWithFlashcard(flashcardId: Int): LiveData<List<FlashcardInSets>>
+    @Query("SELECT * FROM $FLASHCARD_TABLE_NAME")
+    suspend fun flashcardWithSets(): List<FlashcardInSets>
 }
