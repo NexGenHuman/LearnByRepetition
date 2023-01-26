@@ -11,7 +11,3 @@ Mapp/src/main/java/com/example/learnbyrepetition/ui/gallery/GalleryFragment.kt,
 Napp/src/main/java/com/example/learnbyrepetition/ui/gallery/GalleryViewModel.kt,2\c\2c549c88414538c8795a30a7b178f30b24046dcd
 w
 Gapp/src/main/java/com/example/learnbyrepetition/ui/home/HomeFragment.kt,4\9\4900fa8474764666de70005d478f45b0099e13f1
-„
-Tapp/src/main/java/com/example/learnbyrepetition/ui/flashcards/FlashcardsViewModel.kt,d\f\df00187d52b42c676ebb3b8ddaf84f247d44c70c
-ƒ
-Sapp/src/main/java/com/example/learnbyrepetition/ui/flashcards/FlashcardsFragment.kt,3\6\36e791d196cf8d9bf3837ceec28accfaf272abd6

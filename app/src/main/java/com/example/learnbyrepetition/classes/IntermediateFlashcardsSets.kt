@@ -1,48 +1,50 @@
 package com.example.learnbyrepetition.classes
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 
 const val INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME = "intermediateFlashcardsSets"
 
-@Entity(tableName = INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME, primaryKeys = ["id_set","id_flashcard"])
-data class IntermediateFlashcardsSets (
+@Entity(
+    tableName = INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME,
+    primaryKeys = ["id_set", "id_flashcard"]
+)
+data class IntermediateFlashcardsSets(
     val id_set: Long,
     val id_flashcard: Long
-    )
+)
 
-data class SetWithFlashcards (
+data class SetWithFlashcards(
     @Embedded val flashcardSet: FlashcardSet,
     @Relation(
         parentColumn = "id_set",
         entityColumn = "id_flashcard",
         entity = Flashcard::class,
-        associateBy = Junction(IntermediateFlashcardsSets::class, parentColumn = "id_set", entityColumn = "id_flashcard")
+        associateBy = Junction(
+            IntermediateFlashcardsSets::class,
+            parentColumn = "id_set",
+            entityColumn = "id_flashcard"
+        )
     )
     val flashcards: List<Flashcard>
 )
 
-data class FlashcardInSets (
+data class FlashcardInSets(
     @Embedded val flashcard: Flashcard,
     @Relation(
         parentColumn = "id_flashcard",
         entityColumn = "id_set",
         entity = FlashcardSet::class,
-        associateBy = Junction(IntermediateFlashcardsSets::class, parentColumn = "id_flashcard", entityColumn = "id_set")
+        associateBy = Junction(
+            IntermediateFlashcardsSets::class,
+            parentColumn = "id_flashcard",
+            entityColumn = "id_set"
+        )
     )
     val sets: List<FlashcardSet>
 )
 
 @Dao
-interface IntermediateFlashcardsSetsDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertAll(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
-
-    @Update
-    suspend fun updateAll(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
-
-    @Delete
-    suspend fun delete(vararg intermediateFlashcardsSets: IntermediateFlashcardsSets)
+interface IntermediateFlashcardsSetsDao : BaseDao<IntermediateFlashcardsSets> {
 
     @Query("SELECT * FROM $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME")
     suspend fun getAll(): List<IntermediateFlashcardsSets>

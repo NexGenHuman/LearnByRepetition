@@ -1,13 +1,12 @@
 package com.example.learnbyrepetition.classes
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import java.util.Date
 
 const val FLASHCARD_TABLE_NAME = "flashcards"
 
 @Entity(tableName = FLASHCARD_TABLE_NAME)
-data class Flashcard (
+data class Flashcard(
     val englishText: String,
     val polishMeaning: String,
     val dateLastStudied: Date?,
@@ -19,20 +18,23 @@ data class Flashcard (
     val isDataDefault: Boolean,
 
     @PrimaryKey(autoGenerate = true) val id_flashcard: Long = 0
-    )
+)
 
 @Dao
-interface FlashcardDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertAll(vararg flashcards: Flashcard)
-
-    @Update
-    suspend fun updateAll(vararg flashcards: Flashcard)
-
-    @Delete
-    suspend fun delete(vararg flashcard: Flashcard)
+interface FlashcardDao : BaseDao<Flashcard> {
 
     @Query("SELECT * FROM $FLASHCARD_TABLE_NAME")
     suspend fun getAll(): List<Flashcard>
 
+    @Query("SELECT * FROM $FLASHCARD_TABLE_NAME WHERE isWord = 1 AND isDataDefault = 1")
+    suspend fun getAllDefaultWords(): List<Flashcard>
+
+    @Query("SELECT * FROM $FLASHCARD_TABLE_NAME WHERE isWord = 0 AND isDataDefault = 1")
+    suspend fun getAllDefaultSentences(): List<Flashcard>
+
+    @Query("SELECT * FROM $FLASHCARD_TABLE_NAME WHERE isWord = 1 AND isDataDefault = 0")
+    suspend fun getAllOwnWords(): List<Flashcard>
+
+    @Query("SELECT * FROM $FLASHCARD_TABLE_NAME WHERE isWord = 0 AND isDataDefault = 0")
+    suspend fun getAllOwnSentences(): List<Flashcard>
 }

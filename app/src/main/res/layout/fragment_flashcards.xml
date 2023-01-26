@@ -11,37 +11,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <view
-            class="androidx.appcompat.app.AlertController$RecycleListView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/flashcards_default_words_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"/>
 
-        </view>
-
-        <view
-            class="androidx.appcompat.app.AlertController$RecycleListView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/flashcards_default_sentences_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"/>
 
-        </view>
-
-        <view
-            class="androidx.appcompat.app.AlertController$RecycleListView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/flashcards_own_words_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1" />
 
-        </view>
-
-        <view
-            class="androidx.appcompat.app.AlertController$RecycleListView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/flashcards_own_sentences_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-        </view>
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -53,6 +45,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>
