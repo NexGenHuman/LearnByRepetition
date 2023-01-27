@@ -42,4 +42,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="data_deleted">Data deleted</string>
+    <string name="flashcard_sets">Flashcard sets</string>
+    <string name="bundle_selected_flashcard_set_id">selected_flashcard_set</string>
 </resources>

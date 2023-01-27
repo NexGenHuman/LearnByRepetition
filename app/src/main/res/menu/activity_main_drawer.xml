@@ -12,5 +12,9 @@
             android:id="@+id/nav_flashcards"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_flashcards"/>
+        <item
+            android:id="@+id/nav_flashcard_sets"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/flashcard_sets"/>
     </group>
 </menu>

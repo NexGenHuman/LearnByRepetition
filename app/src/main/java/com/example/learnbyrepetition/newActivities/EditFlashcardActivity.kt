@@ -2,14 +2,17 @@ package com.example.learnbyrepetition.newActivities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.learnbyrepetition.R
 import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.database.classes.Flashcard
-import com.example.learnbyrepetition.databinding.ActivityAddFlashcardBinding
 import com.example.learnbyrepetition.databinding.ActivityEditFlashcardBinding
+import com.example.learnbyrepetition.ui.flashcards.FlashcardViewModel
 import kotlinx.coroutines.launch
 
 private lateinit var binding: ActivityEditFlashcardBinding
@@ -22,11 +25,13 @@ class EditFlashcardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_flashcard)
 
+        var flashcardViewModel = ViewModelProvider(this)[FlashcardViewModel::class.java]
+
         binding = ActivityEditFlashcardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (!::flashcard.isInitialized)
         lifecycleScope.launch() {
-            val db = DatabaseFlashcards.getDatabase(this@EditFlashcardActivity)
             val flashcardId =
                 intent.extras?.getLong(getString(R.string.bundle_selected_flashcard_id))
             if (flashcardId == null) {
@@ -34,7 +39,10 @@ class EditFlashcardActivity : AppCompatActivity() {
                     .show()
                 finish()
             } else {
-                flashcard = db.flashcardDao().getById(flashcardId)
+                flashcardViewModel.InitFlashcardId(flashcardId)
+                flashcardViewModel.RunDbQuery(this@EditFlashcardActivity)
+                while(flashcardViewModel.flashcard == null) { }
+                flashcard = flashcardViewModel.flashcard!!
             }
 
             binding.editFlashcardEnglishText.setText(flashcard.englishText)
@@ -65,5 +73,16 @@ class EditFlashcardActivity : AppCompatActivity() {
                 finish()
             }
         })
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        var flashcardViewModel = ViewModelProvider(this)[FlashcardViewModel::class.java]
+
+        flashcardViewModel.flashcard?.englishText = binding.editFlashcardEnglishText.text.toString()
+        flashcardViewModel.flashcard?.polishMeaning =
+            binding.editFlashcardPolishText.text.toString()
+        flashcardViewModel.flashcard?.isWord = binding.editFlashcardIsWord.isChecked
     }
 }
