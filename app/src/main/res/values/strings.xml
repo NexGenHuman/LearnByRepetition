@@ -31,4 +31,15 @@
     <string name="flashcard_is_word">It\'s a word</string>
     <string name="wrong_data">Wrong data!</string>
     <string name="database_failed">Something went wrong in database!</string>
+    <string name="check">Check!</string>
+    <string name="bundle_selected_flashcard_id">selected_flashcard</string>
+    <string name="failures">\"Failures: \"</string>
+    <string name="successes">\"Successes: \"</string>
+    <string name="wrong">Wrong</string>
+    <string name="correct">Correct</string>
+    <string name="edit">Edit</string>
+    <string name="delete_flashcard">Delete flashcard?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="data_deleted">Data deleted</string>
 </resources>

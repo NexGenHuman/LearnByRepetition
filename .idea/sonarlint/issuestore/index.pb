@@ -1,13 +1,15 @@
 
-x
-Happ/src/main/java/com/example/learnbyrepetition/ui/home/HomeViewModel.kt,1\2\12eafc98a428cc3ac6e1db2c28550f5e8d06087e
-Ç
-Rapp/src/main/java/com/example/learnbyrepetition/ui/slideshow/SlideshowViewModel.kt,4\7\47426956ea26c7de9a0eac2c8c6600b1448c1f09
-Å
-Qapp/src/main/java/com/example/learnbyrepetition/ui/slideshow/SlideshowFragment.kt,9\0\905b38caa5e8763f2b601b96e1bf26ae61401a7e
-}
-Mapp/src/main/java/com/example/learnbyrepetition/ui/gallery/GalleryFragment.kt,8\7\875cc8bdf1a064de61862b575578f44fffca23a6
-~
-Napp/src/main/java/com/example/learnbyrepetition/ui/gallery/GalleryViewModel.kt,2\c\2c549c88414538c8795a30a7b178f30b24046dcd
 w
 Gapp/src/main/java/com/example/learnbyrepetition/ui/home/HomeFragment.kt,4\9\4900fa8474764666de70005d478f45b0099e13f1
+m
+=app/src/main/java/com/example/learnbyrepetition/Converters.kt,a\4\a4af1267450dec02b16005653ccd83e09aa7f840
+r
+Bapp/src/main/java/com/example/learnbyrepetition/classes/BaseDao.kt,6\c\6c6f58aab0aad62de46433fc16a68fa578f8d218
+u
+Eapp/src/main/java/com/example/learnbyrepetition/DatabaseFlashcards.kt,6\2\62f96b4257bcea39bb665919d6d0fda12fb616a0
+w
+Gapp/src/main/java/com/example/learnbyrepetition/classes/FlashcardSet.kt,9\a\9a2f1c016c01c092777b20c754a905e04ae0ef2e
+Ö
+Uapp/src/main/java/com/example/learnbyrepetition/classes/IntermediateFlashcardsSets.kt,b\4\b49effb45523407e8679147a927d0ebfa30246ab
+w
+Gapp/src/main/java/com/example/learnbyrepetition/AddFlashcardActivity.kt,4\8\48c7d3cc5f1087d1e1e9c0d7e24c39d11ce82a33

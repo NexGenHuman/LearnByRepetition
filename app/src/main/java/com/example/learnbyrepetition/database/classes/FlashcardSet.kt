@@ -1,4 +1,4 @@
-package com.example.learnbyrepetition.classes
+package com.example.learnbyrepetition.database.classes
 
 import androidx.room.*
 
@@ -6,9 +6,9 @@ const val FLASHCARD_SETS_TABLE_NAME = "flashcardSets"
 
 @Entity(tableName = FLASHCARD_SETS_TABLE_NAME)
 data class FlashcardSet(
-    val name: String,
+    var name: String,
     
-    @PrimaryKey(autoGenerate = true) val id_set: Long = 0
+    @PrimaryKey(autoGenerate = true) var id_set: Long = 0
 )
 
 @Dao

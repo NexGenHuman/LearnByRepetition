@@ -5,33 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".newActivities.AddFlashcardActivity">
+    tools:context=".newActivities.EditFlashcardActivity">
 
     <EditText
-        android:id="@+id/new_flashcard_english_text"
+        android:id="@+id/edit_flashcard_english_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="@string/flashcard_english" />
 
     <EditText
-        android:id="@+id/new_flashcard_polish_text"
+        android:id="@+id/edit_flashcard_polish_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="@string/flashcard_polish" />
 
     <CheckBox
-        android:id="@+id/new_flashcard_is_word"
+        android:id="@+id/edit_flashcard_is_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/flashcard_is_word" />
 
     <Button
-        android:id="@+id/button_new_flashcard"
+        android:id="@+id/button_edit_flashcard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/add"/>
+        android:text="@string/edit"/>
 
 </LinearLayout>

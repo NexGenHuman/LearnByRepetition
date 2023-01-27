@@ -1,4 +1,4 @@
-package com.example.learnbyrepetition.classes
+package com.example.learnbyrepetition.database.classes
 
 import androidx.room.Delete
 import androidx.room.Insert

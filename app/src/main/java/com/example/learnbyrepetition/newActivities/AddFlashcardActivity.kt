@@ -1,10 +1,12 @@
-package com.example.learnbyrepetition
+package com.example.learnbyrepetition.newActivities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.example.learnbyrepetition.classes.Flashcard
+import com.example.learnbyrepetition.database.DatabaseFlashcards
+import com.example.learnbyrepetition.R
+import com.example.learnbyrepetition.database.classes.Flashcard
 import com.example.learnbyrepetition.databinding.ActivityAddFlashcardBinding
 import kotlinx.coroutines.launch
 
@@ -38,6 +40,7 @@ class AddFlashcardActivity : AppCompatActivity() {
                 if (englishText.isEmpty() || polishText.isEmpty()) {
                     Toast.makeText(context, getString(R.string.wrong_data), Toast.LENGTH_SHORT)
                         .show()
+                    return@launch
                 }
                 val state =
                     DatabaseFlashcards.getDatabase(context).flashcardDao().insert(newFlashcard)

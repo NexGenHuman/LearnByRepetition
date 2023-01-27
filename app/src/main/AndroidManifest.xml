@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.learnbyrepetition">
+    package="com.example.learnbyrepetition" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -10,15 +10,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LearnByRepetition">
+        android:theme="@style/Theme.LearnByRepetition" >
         <activity
-            android:name=".AddFlashcardActivity"
+            android:name=".newActivities.EditFlashcardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".newActivities.DetailsFlashcardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".newActivities.AddFlashcardActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.LearnByRepetition.NoActionBar">
+            android:theme="@style/Theme.LearnByRepetition.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

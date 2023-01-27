@@ -1,8 +1,7 @@
-package com.example.learnbyrepetition
+package com.example.learnbyrepetition.database
 
 import androidx.room.TypeConverter
 import java.util.Date
-import kotlin.time.Duration.Companion.milliseconds
 
 class Converters {
     @TypeConverter

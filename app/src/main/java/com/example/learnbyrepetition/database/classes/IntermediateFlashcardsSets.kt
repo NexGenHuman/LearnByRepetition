@@ -1,4 +1,4 @@
-package com.example.learnbyrepetition.classes
+package com.example.learnbyrepetition.database.classes
 
 import androidx.room.*
 
@@ -9,8 +9,8 @@ const val INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME = "intermediateFlashcardsSets"
     primaryKeys = ["id_set", "id_flashcard"]
 )
 data class IntermediateFlashcardsSets(
-    val id_set: Long,
-    val id_flashcard: Long
+    var id_set: Long,
+    var id_flashcard: Long
 )
 
 data class SetWithFlashcards(

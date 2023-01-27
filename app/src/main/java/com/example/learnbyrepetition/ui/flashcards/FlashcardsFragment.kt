@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.learnbyrepetition.AddFlashcardActivity
-import com.example.learnbyrepetition.DatabaseFlashcards
+import com.example.learnbyrepetition.newActivities.AddFlashcardActivity
+import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.FlashcardAdapter
 import com.example.learnbyrepetition.databinding.FragmentFlashcardsBinding
 import kotlinx.coroutines.launch
