@@ -31,24 +31,25 @@ class EditFlashcardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (!::flashcard.isInitialized)
-        lifecycleScope.launch() {
-            val flashcardId =
-                intent.extras?.getLong(getString(R.string.bundle_selected_flashcard_id))
-            if (flashcardId == null) {
-                Toast.makeText(this@EditFlashcardActivity, "Bundle ERROR", Toast.LENGTH_LONG)
-                    .show()
-                finish()
-            } else {
-                flashcardViewModel.InitFlashcardId(flashcardId)
-                flashcardViewModel.RunDbQuery(this@EditFlashcardActivity)
-                while(flashcardViewModel.flashcard == null) { }
-                flashcard = flashcardViewModel.flashcard!!
-            }
+            lifecycleScope.launch() {
+                val flashcardId =
+                    intent.extras?.getLong(getString(R.string.bundle_selected_flashcard_id))
+                if (flashcardId == null) {
+                    Toast.makeText(this@EditFlashcardActivity, "Bundle ERROR", Toast.LENGTH_LONG)
+                        .show()
+                    finish()
+                } else {
+                    flashcardViewModel.InitFlashcardId(flashcardId)
+                    flashcardViewModel.RunDbQuery(this@EditFlashcardActivity)
+                    while (flashcardViewModel.flashcard == null) {
+                    }
+                    flashcard = flashcardViewModel.flashcard!!
+                }
 
-            binding.editFlashcardEnglishText.setText(flashcard.englishText)
-            binding.editFlashcardPolishText.setText(flashcard.polishMeaning)
-            binding.editFlashcardIsWord.isChecked = flashcard.isWord
-        }
+                binding.editFlashcardEnglishText.setText(flashcard.englishText)
+                binding.editFlashcardPolishText.setText(flashcard.polishMeaning)
+                binding.editFlashcardIsWord.isChecked = flashcard.isWord
+            }
 
         binding.buttonEditFlashcard.setOnClickListener(View.OnClickListener {
             flashcard.englishText = binding.editFlashcardEnglishText.text.toString()

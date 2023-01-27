@@ -11,21 +11,21 @@ import androidx.lifecycle.lifecycleScope
 import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.R
 import com.example.learnbyrepetition.database.classes.Flashcard
-import com.example.learnbyrepetition.databinding.ActivityFlashcardDetailsBinding
+import com.example.learnbyrepetition.databinding.ActivityDetailsFlashcardBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
 class DetailsFlashcardActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityFlashcardDetailsBinding
+    private lateinit var binding: ActivityDetailsFlashcardBinding
     lateinit var flashcard: Flashcard
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_flashcard_details)
+        setContentView(R.layout.activity_details_flashcard)
 
-        binding = ActivityFlashcardDetailsBinding.inflate(layoutInflater)
+        binding = ActivityDetailsFlashcardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm")

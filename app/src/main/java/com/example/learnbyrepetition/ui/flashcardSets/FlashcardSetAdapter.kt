@@ -3,6 +3,7 @@ package com.example.learnbyrepetition.ui.flashcardSets
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -13,7 +14,7 @@ import com.example.learnbyrepetition.newActivities.DetailsFlashcardSetActivity
 import com.example.learnbyrepetition.ui.flashcards.FlashcardAdapter
 
 class FlashcardSetAdapter(var flashcardSets: List<FlashcardSet>, context: Context) :
-    RecyclerView.Adapter<FlashcardAdapter.FlashcardViewHolder>() {
+    RecyclerView.Adapter<FlashcardSetAdapter.FlashcardSetViewHolder>() {
 
     val mContext = context
 
@@ -51,16 +52,23 @@ class FlashcardSetAdapter(var flashcardSets: List<FlashcardSet>, context: Contex
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FlashcardAdapter.FlashcardViewHolder {
-        TODO("Not yet implemented")
+    ): FlashcardSetViewHolder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_flashcard_set, parent, false)
+        return FlashcardSetViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return flashcardSets.size
     }
 
-    override fun onBindViewHolder(holder: FlashcardAdapter.FlashcardViewHolder, position: Int) {
-        TODO("Not yet implemented")
+    override fun onBindViewHolder(holder: FlashcardSetAdapter.FlashcardSetViewHolder, position: Int) {
+        with(flashcardSets[position]) {
+            holder.titleTextView.text = name
+            holder.flashcardCountTextView.text = String.format("%d", -1)
+
+            holder.id = id_set
+        }
     }
 
 

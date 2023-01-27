@@ -50,7 +50,7 @@ class FlashcardSetsFragment : Fragment() {
 
             binding.flashcardSetsRecycler.adapter =
                 FlashcardSetAdapter(flashcardSets, mContext)
-            binding.flashcardsDefaultWordsRecycler.layoutManager =
+            binding.flashcardSetsRecycler.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         }
     }

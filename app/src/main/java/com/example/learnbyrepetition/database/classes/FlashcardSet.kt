@@ -14,6 +14,9 @@ data class FlashcardSet(
 @Dao
 interface FlashcardSetDao : BaseDao<FlashcardSet> {
 
+    @Query("SELECT * FROM $FLASHCARD_SETS_TABLE_NAME WHERE id_set=:id")
+    suspend fun getById(id: Long): FlashcardSet
+
     @Query("SELECT * FROM $FLASHCARD_SETS_TABLE_NAME")
     suspend fun getAll(): List<FlashcardSet>
 }
