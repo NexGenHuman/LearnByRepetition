@@ -1,13 +1,15 @@
-package com.example.learnbyrepetition
+package com.example.learnbyrepetition.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.learnbyrepetition.classes.*
+import androidx.room.TypeConverters
+import com.example.learnbyrepetition.database.classes.*
 
 @Database(entities = [Flashcard::class, FlashcardSet::class, IntermediateFlashcardsSets::class],
     version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class DatabaseFlashcards: RoomDatabase() {
     abstract fun flashcardDao(): FlashcardDao
     abstract fun flashcardSetDao(): FlashcardSetDao
@@ -27,7 +29,7 @@ abstract class DatabaseFlashcards: RoomDatabase() {
                     context.applicationContext,
                     DatabaseFlashcards::class.java,
                     "database_flashcards"
-                ).build()
+                ).createFromAsset("database/FlashcardsPrepolulation.db").build()
                 INSTANCE = instance
                 return instance
             }
