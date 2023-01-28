@@ -40,4 +40,12 @@ interface FlashcardDao : BaseDao<Flashcard> {
 
     @Query("SELECT * FROM $FLASHCARD_TABLE_NAME WHERE isWord = 0 AND isDataDefault = 0")
     suspend fun getAllOwnSentences(): List<Flashcard>
+
+    @Transaction
+    @Query("SELECT * FROM $FLASHCARD_TABLE_NAME INNER JOIN $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME ON $FLASHCARD_TABLE_NAME.id_flashcard = $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME.id_flashcard WHERE $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME.id_set = :flashcardSetId")
+    suspend fun getFlashcardsByFlashcardSet(flashcardSetId: Long): List<Flashcard>
+
+    @Transaction
+    @Query("SELECT COUNT(*) FROM $FLASHCARD_TABLE_NAME INNER JOIN $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME ON $FLASHCARD_TABLE_NAME.id_flashcard = $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME.id_flashcard WHERE $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME.id_set = :flashcardSetId")
+    suspend fun getFlashcardsByFlashcardSetCount(flashcardSetId: Long): Int
 }

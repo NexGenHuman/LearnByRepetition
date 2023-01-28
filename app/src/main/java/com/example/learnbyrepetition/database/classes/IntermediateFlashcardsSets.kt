@@ -48,12 +48,4 @@ interface IntermediateFlashcardsSetsDao : BaseDao<IntermediateFlashcardsSets> {
 
     @Query("SELECT * FROM $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME")
     suspend fun getAll(): List<IntermediateFlashcardsSets>
-
-    @Transaction
-    @Query("SELECT * FROM $FLASHCARD_SETS_TABLE_NAME")
-    suspend fun setWithFlashcards(): List<SetWithFlashcards>
-
-    @Transaction
-    @Query("SELECT * FROM $FLASHCARD_TABLE_NAME")
-    suspend fun flashcardWithSets(): List<FlashcardInSets>
 }

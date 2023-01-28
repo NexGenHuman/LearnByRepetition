@@ -8,10 +8,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.R
 import com.example.learnbyrepetition.database.classes.Flashcard
 import com.example.learnbyrepetition.databinding.ActivityDetailsFlashcardBinding
+import com.example.learnbyrepetition.ui.flashcardSets.FlashcardSetAdapter
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -114,7 +116,7 @@ class DetailsFlashcardActivity : AppCompatActivity() {
         binding.fabDeleteFlashcard.setOnClickListener(View.OnClickListener {
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.delete_flashcard))
-                .setMessage("Are you sure you want to delete this flashcard?")
+                .setMessage(getString(R.string.delete_flashcard_info))
                 .setPositiveButton(getString(R.string.yes), DialogInterface.OnClickListener() { dialogInterface: DialogInterface, i: Int ->
                     lifecycleScope.launch() {
                         val db = DatabaseFlashcards.getDatabase(this@DetailsFlashcardActivity)

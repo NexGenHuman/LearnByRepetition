@@ -7,17 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learnbyrepetition.R
+import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.database.classes.FlashcardSet
 import com.example.learnbyrepetition.newActivities.DetailsFlashcardSetActivity
-import com.example.learnbyrepetition.ui.flashcards.FlashcardAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class FlashcardSetAdapter(var flashcardSets: List<FlashcardSet>, context: Context) :
     RecyclerView.Adapter<FlashcardSetAdapter.FlashcardSetViewHolder>() {
 
     val mContext = context
 
+    private val uiScope = CoroutineScope(Dispatchers.Main + Job())
 
     inner class FlashcardSetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
@@ -62,12 +68,21 @@ class FlashcardSetAdapter(var flashcardSets: List<FlashcardSet>, context: Contex
         return flashcardSets.size
     }
 
-    override fun onBindViewHolder(holder: FlashcardSetAdapter.FlashcardSetViewHolder, position: Int) {
-        with(flashcardSets[position]) {
-            holder.titleTextView.text = name
-            holder.flashcardCountTextView.text = String.format("%d", -1)
+    override fun onBindViewHolder(
+        holder: FlashcardSetAdapter.FlashcardSetViewHolder,
+        position: Int
+    ) {
 
-            holder.id = id_set
+        with(flashcardSets[position]) {
+            uiScope.launch {
+                holder.titleTextView.text = name
+
+                val db = DatabaseFlashcards.getDatabase(mContext)
+                val flashcardCount = db.flashcardDao().getFlashcardsByFlashcardSetCount(id_set).toString()
+                holder.flashcardCountTextView.text = mContext.getString(R.string.flashcards) + flashcardCount
+
+                holder.id = id_set
+            }
         }
     }
 
