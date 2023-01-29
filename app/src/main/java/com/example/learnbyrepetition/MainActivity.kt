@@ -1,5 +1,6 @@
 package com.example.learnbyrepetition
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,7 +13,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.learnbyrepetition.databinding.ActivityMainBinding
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,7 +51,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
+        when(item.itemId) {
+            R.id.action_switch_language -> {
+                val currentLang = resources.configuration.locale.language
+                if (currentLang == "pl")
+                    resources.configuration.locale = Locale("en")
+                else
+                    resources.configuration.locale = Locale("pl")
+
+                resources.updateConfiguration(Configuration(), resources.displayMetrics)
+                return true
+            }
+            R.id.action_switch_theme -> {
+                if (AppCompatDelegate.getDefaultNightMode().equals(AppCompatDelegate.MODE_NIGHT_YES))
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                else
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

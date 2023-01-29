@@ -1,0 +1,46 @@
+<resources>
+    <string name="navigation_drawer_open">Otwórz szufladę nawigacyjną</string>
+    <string name="navigation_drawer_close">Zamknij szufladę nawigacyjną</string>
+    <string name="nav_header_desc">Nagłówek nawigacji</string>
+    <string name="action_settings">Ustawienia</string>
+
+    <string name="never_studied">Nigdy nie uczone</string>
+
+    <string name="flashcards_words">Fiszki słowa</string>
+    <string name="flashcards_sentences">Fiszki zdania</string>
+    <string name="flashcards_words_own">Własne fiszki słowa</string>
+    <string name="flashcards_sentences_own">Własne fiszki zdania</string>
+
+    <string name="add">Dodaj</string>
+
+    <!-- MENU RELATED -->
+    <string name="menu_home">Główna</string>
+    <string name="menu_flashcards">Fiszki</string>
+    <string name="flashcard_sets">Zestawy fiszek</string>
+
+    <!-- FLASHCARD RELATED -->
+    <string name="flashcard_english">Angielski</string>
+    <string name="flashcard_polish">Polski</string>
+    <string name="flashcard_last_studied">Ostatnio uczone</string>
+    <string name="flashcard_success_count">Ilość sukcesów</string>
+    <string name="flashcard_failure_count">Ilość porażek</string>
+    <string name="flashcard_is_word">To słowo</string>
+    <string name="wrong_data">Złe dane!</string>
+    <string name="database_failed">Coś poszło nie tak w bazie danych!</string>
+    <string name="check">Sprawdź!</string>
+    <string name="failures">Porażki: </string>
+    <string name="successes">Sukcesy: </string>
+    <string name="wrong">Źle</string>
+    <string name="correct">Poprawnie</string>
+    <string name="edit">Edytuj</string>
+    <string name="delete_flashcard">Usunąć fiszkę?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="data_deleted">Dane usunięte</string>
+    <string name="delete_flashcard_set">Usunąć zestaw fiszek?</string>
+    <string name="delete_flashcard_set_info">Czy jesteś pewien że chcesz usunąć ten zestaw fiszek?</string>
+    <string name="delete_flashcard_info">Czy jesteś pewien że chcesz usunąć tą fiszkę?</string>
+    <string name="flashcards">Fiszki: </string>
+    <string name="switch_theme">Zmień styl</string>
+    <string name="switch_language">Zmień język</string>
+</resources>

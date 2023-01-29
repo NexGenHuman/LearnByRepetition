@@ -2,8 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_switch_theme"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/switch_theme"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_switch_language"
+        android:orderInCategory="99"
+        android:title="@string/switch_language"
         app:showAsAction="never" />
 </menu>

@@ -44,7 +44,7 @@ class AddFlashcardActivity : AppCompatActivity() {
                 }
                 val state =
                     DatabaseFlashcards.getDatabase(context).flashcardDao().insert(newFlashcard)
-                if (state <= 0) {
+                if (state < 0) {
                     Toast.makeText(context, getString(R.string.database_failed), Toast.LENGTH_LONG)
                         .show()
                     return@launch

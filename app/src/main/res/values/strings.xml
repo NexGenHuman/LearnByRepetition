@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">LearnByRepetition</string>
+    <string name="app_name" translatable="false">LearnByRepetition</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -18,8 +18,6 @@
 
     <!-- MENU RELATED -->
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
     <string name="menu_flashcards">Flashcards</string>
 
     <!-- FLASHCARD RELATED -->
@@ -32,7 +30,7 @@
     <string name="wrong_data">Wrong data!</string>
     <string name="database_failed">Something went wrong in database!</string>
     <string name="check">Check!</string>
-    <string name="bundle_selected_flashcard_id">selected_flashcard</string>
+    <string name="bundle_selected_flashcard_id" translatable="false">selected_flashcard</string>
     <string name="failures">Failures: </string>
     <string name="successes">Successes: </string>
     <string name="wrong">Wrong</string>
@@ -43,9 +41,11 @@
     <string name="no">No</string>
     <string name="data_deleted">Data deleted</string>
     <string name="flashcard_sets">Flashcard sets</string>
-    <string name="bundle_selected_flashcard_set_id">selected_flashcard_set</string>
+    <string name="bundle_selected_flashcard_set_id" translatable="false">selected_flashcard_set</string>
     <string name="delete_flashcard_set">Delete flashcard set?</string>
     <string name="delete_flashcard_set_info">Are you sure you want to delete this flashcard set?</string>
     <string name="delete_flashcard_info">Are you sure you want to delete this flashcard?</string>
     <string name="flashcards">Flashcards: </string>
+    <string name="switch_theme">Switch theme</string>
+    <string name="switch_language">Switch language</string>
 </resources>
