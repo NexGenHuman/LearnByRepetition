@@ -1,9 +1,14 @@
 package com.example.learnbyrepetition
 
+import android.content.Context
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -14,6 +19,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.os.LocaleListCompat
 import com.example.learnbyrepetition.databinding.ActivityMainBinding
 import java.util.*
 
@@ -50,23 +57,39 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.action_switch_language -> {
-                val currentLang = resources.configuration.locale.language
-                if (currentLang == "pl")
-                    resources.configuration.locale = Locale("en")
-                else
-                    resources.configuration.locale = Locale("pl")
+                var config = this.resources.configuration
+                var language = "pl"
 
-                resources.updateConfiguration(Configuration(), resources.displayMetrics)
+                if (config.locale.language == "pl")
+                    language = "en"
+
+                var locale = Locale(language)
+                config.setLocale(locale)
+                resources.updateConfiguration(config, resources.displayMetrics)
+
+                recreate()
                 return true
             }
             R.id.action_switch_theme -> {
-                if (AppCompatDelegate.getDefaultNightMode().equals(AppCompatDelegate.MODE_NIGHT_YES))
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                else
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                TODO("Make it work")
+                //setTheme(R.style.Theme_MaterialComponents)
+                setTheme(R.style.Theme_MaterialComponents_DayNight_DarkActionBar)
+
+                /*if (resources.getIdentifier(
+                        "Theme.LearnByRepetition",
+                        "style",
+                        packageName
+                    ) == R.style.Theme_MaterialComponents
+                ) {
+                    setTheme(R.style.Theme_MaterialComponents)
+                } else {
+                    setTheme(R.style.Theme_MaterialComponents_DayNight_DarkActionBar)
+                }*/
+                recreate()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

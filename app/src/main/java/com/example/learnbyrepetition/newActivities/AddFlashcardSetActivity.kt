@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
@@ -12,6 +13,7 @@ import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.database.classes.FlashcardSet
 import com.example.learnbyrepetition.database.classes.IntermediateFlashcardsSets
 import com.example.learnbyrepetition.databinding.ActivityAddFlashcardSetBinding
+import com.example.learnbyrepetition.ui.flashcardSets.FlashcardSetsViewModel
 import com.example.learnbyrepetition.ui.flashcards.FlashcardSelectionAdapter
 import kotlinx.coroutines.launch
 
@@ -25,6 +27,8 @@ class AddFlashcardSetActivity : AppCompatActivity() {
         binding = ActivityAddFlashcardSetBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var flashcardSetViewModel = ViewModelProvider(this)[FlashcardSetsViewModel::class.java]
+
         lifecycleScope.launch() {
             val db = DatabaseFlashcards.getDatabase(this@AddFlashcardSetActivity)
             val flashcards = db.flashcardDao().getAll()
@@ -33,7 +37,11 @@ class AddFlashcardSetActivity : AppCompatActivity() {
 
             binding.newFlashcardSetFlashcardsSelection.adapter = adapter
             binding.newFlashcardSetFlashcardsSelection.layoutManager =
-                LinearLayoutManager(this@AddFlashcardSetActivity, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(
+                    this@AddFlashcardSetActivity,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
         }
 
         binding.newFlashcardAdd.setOnClickListener(View.OnClickListener {
@@ -42,7 +50,11 @@ class AddFlashcardSetActivity : AppCompatActivity() {
 
             lifecycleScope.launch() {
                 if (name.isEmpty()) {
-                    Toast.makeText(this@AddFlashcardSetActivity, getString(R.string.wrong_data), Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        this@AddFlashcardSetActivity,
+                        getString(R.string.wrong_data),
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                     return@launch
                 }
@@ -51,7 +63,11 @@ class AddFlashcardSetActivity : AppCompatActivity() {
                 val state =
                     db.flashcardSetDao().insert(newFlashcardSet)
                 if (state < 0) {
-                    Toast.makeText(this@AddFlashcardSetActivity, getString(R.string.database_failed), Toast.LENGTH_LONG)
+                    Toast.makeText(
+                        this@AddFlashcardSetActivity,
+                        getString(R.string.database_failed),
+                        Toast.LENGTH_LONG
+                    )
                         .show()
                     return@launch
                 }
