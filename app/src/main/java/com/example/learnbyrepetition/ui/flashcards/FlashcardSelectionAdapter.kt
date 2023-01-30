@@ -51,7 +51,11 @@ class FlashcardSelectionAdapter(private val flashcards: List<Flashcard>, context
             holder.id = id_flashcard
         }
 
-        holder.itemView.isSelected = flashcard in selectedFlashcards
+        if (flashcard in selectedFlashcards) {
+            holder.itemView.isSelected = true
+            holder.itemView.setBackgroundColor(mContext.resources.getColor(R.color.design_default_color_secondary))
+        }
+
         holder.itemView.setOnClickListener {
             if (flashcard in selectedFlashcards) {
                 selectedFlashcards.remove(flashcard)

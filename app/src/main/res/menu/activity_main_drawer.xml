@@ -16,5 +16,9 @@
             android:id="@+id/nav_flashcard_sets"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/flashcard_sets"/>
+        <item
+            android:id="@+id/nav_shake_me"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/random_flashcard"/>
     </group>
 </menu>

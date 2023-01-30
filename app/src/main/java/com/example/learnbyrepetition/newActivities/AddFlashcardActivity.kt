@@ -2,8 +2,10 @@ package com.example.learnbyrepetition.newActivities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.example.learnbyrepetition.MyApplication
 import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.R
 import com.example.learnbyrepetition.database.classes.Flashcard
@@ -51,6 +53,14 @@ class AddFlashcardActivity : AppCompatActivity() {
                 }
                 finish()
             }
+        }
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return if ((application as MyApplication).isTouchEnabled()) {
+            super.dispatchTouchEvent(ev)
+        } else {
+            true
         }
     }
 }

@@ -22,4 +22,10 @@
         android:name="com.example.learnbyrepetition.ui.flashcardSets.FlashcardSetsFragment"
         android:label="@string/flashcard_sets"
         tools:layout="@layout/fragment_flashcard_sets" />
+
+    <fragment
+        android:id="@+id/nav_shake_me"
+        android:name="com.example.learnbyrepetition.ui.shakeMe.ShakeMeFragment"
+        android:label="@string/random_flashcard"
+        tools:layout="@layout/fragment_shake_me" />
 </navigation>

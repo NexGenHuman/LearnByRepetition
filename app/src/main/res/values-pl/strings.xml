@@ -43,4 +43,8 @@
     <string name="flashcards">Fiszki: </string>
     <string name="switch_theme">Zmień styl</string>
     <string name="switch_language">Zmień język</string>
+    <string name="save">Zapisz</string>
+    <string name="app_based_on_wanikani">Aplikacja bazowana na Wanikani</string>
+    <string name="random_flashcard">Random flashcard</string>
+    <string name="shake_me">Shake me</string>
 </resources>

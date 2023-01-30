@@ -48,4 +48,8 @@
     <string name="flashcards">Flashcards: </string>
     <string name="switch_theme">Switch theme</string>
     <string name="switch_language">Switch language</string>
+    <string name="save">Save</string>
+    <string name="app_based_on_wanikani">App based on Wanikani</string>
+    <string name="random_flashcard">Random flashcard</string>
+    <string name="shake_me">Shake me</string>
 </resources>

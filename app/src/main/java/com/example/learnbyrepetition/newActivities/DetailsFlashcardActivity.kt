@@ -4,11 +4,13 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.learnbyrepetition.MyApplication
 import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.R
 import com.example.learnbyrepetition.database.classes.Flashcard
@@ -128,5 +130,13 @@ class DetailsFlashcardActivity : AppCompatActivity() {
                 .setNegativeButton(getString(R.string.no), null)
                 .show()
         })
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return if ((application as MyApplication).isTouchEnabled()) {
+            super.dispatchTouchEvent(ev)
+        } else {
+            true
+        }
     }
 }

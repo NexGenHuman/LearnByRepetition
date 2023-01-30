@@ -9,7 +9,6 @@ import com.example.learnbyrepetition.database.classes.FlashcardSet
 class FlashcardSetsViewModel : ViewModel() {
 
     var flashcardSet: FlashcardSet? = null
-    var flashcards: List<Flashcard>? = null
 
     private var _id: Long = -1
 
@@ -21,7 +20,6 @@ class FlashcardSetsViewModel : ViewModel() {
         if (_id != -1L && flashcardSet == null) {
             val db = DatabaseFlashcards.getDatabase(context)
             flashcardSet = db.flashcardSetDao().getById(_id)
-            flashcards = db.flashcardDao().getFlashcardsByFlashcardSet(_id)
         }
     }
 

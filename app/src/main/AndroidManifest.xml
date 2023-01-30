@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnByRepetition"
-        android:localeConfig="@xml/locales_config">
+        android:localeConfig="@xml/locales_config"
+        android:name=".MyApplication">
         <activity
             android:name=".newActivities.EditFlashcardSetActivity"
             android:exported="false" />

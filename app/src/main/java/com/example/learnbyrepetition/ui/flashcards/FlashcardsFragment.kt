@@ -2,6 +2,7 @@ package com.example.learnbyrepetition.ui.flashcards
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.learnbyrepetition.newActivities.AddFlashcardActivity
 import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.databinding.FragmentFlashcardsBinding
@@ -51,25 +53,31 @@ class FlashcardsFragment : Fragment() {
             val flashcardsOwnWords = db.flashcardDao().getAllOwnWords()
             val flashcardsOwnSentences = db.flashcardDao().getAllOwnSentences()
 
+            val phoneOrientation = resources.configuration.orientation
+
+            var orientation = RecyclerView.HORIZONTAL
+            if (phoneOrientation == Configuration.ORIENTATION_LANDSCAPE)
+                orientation = RecyclerView.VERTICAL
+
             binding.flashcardsDefaultWordsRecycler.adapter =
                 FlashcardAdapter(flashcardsDefaultWords, mContext)
             binding.flashcardsDefaultWordsRecycler.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                LinearLayoutManager(activity, orientation, false)
 
             binding.flashcardsDefaultSentencesRecycler.adapter =
                 FlashcardAdapter(flashcardsDefaultSentences, mContext)
             binding.flashcardsDefaultSentencesRecycler.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                LinearLayoutManager(activity, orientation, false)
 
             binding.flashcardsOwnWordsRecycler.adapter =
                 FlashcardAdapter(flashcardsOwnWords, mContext)
             binding.flashcardsOwnWordsRecycler.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                LinearLayoutManager(activity, orientation, false)
 
             binding.flashcardsOwnSentencesRecycler.adapter =
                 FlashcardAdapter(flashcardsOwnSentences, mContext)
             binding.flashcardsOwnSentencesRecycler.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                LinearLayoutManager(activity, orientation, false)
         }
     }
 

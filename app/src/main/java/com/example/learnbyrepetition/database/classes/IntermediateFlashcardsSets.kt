@@ -48,4 +48,7 @@ interface IntermediateFlashcardsSetsDao : BaseDao<IntermediateFlashcardsSets> {
 
     @Query("SELECT * FROM $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME")
     suspend fun getAll(): List<IntermediateFlashcardsSets>
+
+    @Query("DELETE FROM $INTERMEDIATE_FLASHCARDS_SETS_TABLE_NAME WHERE id_set = :setId")
+    suspend fun deleteFlashcardSetsBySetId(setId: Long)
 }

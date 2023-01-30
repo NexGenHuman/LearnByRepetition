@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.learnbyrepetition.MyApplication
 import com.example.learnbyrepetition.R
 import com.example.learnbyrepetition.database.DatabaseFlashcards
 import com.example.learnbyrepetition.database.classes.Flashcard
@@ -85,5 +87,13 @@ class EditFlashcardActivity : AppCompatActivity() {
         flashcardViewModel.flashcard?.polishMeaning =
             binding.editFlashcardPolishText.text.toString()
         flashcardViewModel.flashcard?.isWord = binding.editFlashcardIsWord.isChecked
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return if ((application as MyApplication).isTouchEnabled()) {
+            super.dispatchTouchEvent(ev)
+        } else {
+            true
+        }
     }
 }

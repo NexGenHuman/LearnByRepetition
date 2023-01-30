@@ -1,15 +1,24 @@
 package com.example.learnbyrepetition.ui.home
 
+import android.content.Context
+import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.learnbyrepetition.R
 import com.example.learnbyrepetition.databinding.FragmentHomeBinding
+import java.net.URL
 
 class HomeFragment : Fragment() {
 
@@ -35,6 +44,12 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
+        binding.toWanikani.setOnClickListener(View.OnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.wanikani.com/"))
+            startActivity(intent)
+        })
+
         return root
     }
 

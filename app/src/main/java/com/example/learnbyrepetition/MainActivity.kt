@@ -8,6 +8,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_flashcards, R.id.nav_flashcard_sets
+                R.id.nav_home, R.id.nav_flashcards, R.id.nav_flashcard_sets, R.id.nav_shake_me
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -99,5 +100,13 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return if ((application as MyApplication).isTouchEnabled()) {
+            super.dispatchTouchEvent(ev)
+        } else {
+            true
+        }
     }
 }
